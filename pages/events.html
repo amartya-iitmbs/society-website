@@ -22,7 +22,7 @@
       <div class="left-group">
         <span class="dot amber"></span>
         <span class="dot green"></span>
-        <span class="tag">AFS // EVENTS</span>
+        <span class="tag" id="route-breadcrumb">AFS // EVENTS</span>
       </div>
       <div class="center-group">
         <span>AMARTYA FINANCE SOCIETY</span>
@@ -32,14 +32,74 @@
       <div class="right-group" id="clock"></div>
     </header>
 
-    <nav class="page-menu panel" aria-label="Navigation menu">
-      <div class="panel-header">NAVIGATION MENU</div>
+    <nav class="page-menu panel" aria-label="Navigation router" data-router data-page="events">
+      <div class="panel-header">AFS ROUTER</div>
       <div class="page-menu-row">
-        <span class="menu-prompt">AFS.ROUTER ></span>
-        <a class="page-link" href="../index.html"><span>01</span> HOME</a>
-        <a class="page-link active" href="events.html" aria-current="page"><span>02</span> EVENTS</a>
-        <a class="page-link" href="resources.html"><span>03</span> RESOURCES</a>
-        <a class="page-link" href="contact.html"><span>04</span> CONTACT US</a>
+        <span class="menu-prompt">NAV ROUTES ></span>
+
+        <div class="route-stack">
+          <p class="route-tier">MAIN ROUTES</p>
+
+          <a
+            class="page-link route-primary"
+            data-route="home"
+            data-key="1"
+            data-state="LIVE"
+            data-breadcrumb="HOME"
+            data-desc="Mission control for desk updates, live board snapshots, and society-wide routing."
+            href="../index.html"
+          >
+            <span class="route-prefix">&gt;</span><span class="route-index">01</span><span class="route-name">HOME</span><span class="route-badge">LIVE</span>
+          </a>
+          <a
+            class="page-link route-primary active"
+            data-route="events"
+            data-key="2"
+            data-state="LIVE"
+            data-breadcrumb="EVENTS"
+            data-desc="Upcoming market sessions, competitions, and archives across AFS."
+            href="events.html"
+            aria-current="page"
+          >
+            <span class="route-prefix">&gt;</span><span class="route-index">02</span><span class="route-name">EVENTS</span><span class="route-badge">ACTIVE</span>
+          </a>
+          <a
+            class="page-link route-primary"
+            data-route="resources"
+            data-key="3"
+            data-state="LIVE"
+            data-breadcrumb="RESOURCES"
+            data-desc="Curated and produced learning material including PDFs, articles, and video lectures."
+            href="resources.html"
+          >
+            <span class="route-prefix">&gt;</span><span class="route-index">03</span><span class="route-name">RESOURCES</span><span class="route-badge">LIVE</span>
+          </a>
+          <a
+            class="page-link route-primary"
+            data-route="contact"
+            data-key="4"
+            data-state="OPEN"
+            data-breadcrumb="CONTACT"
+            data-desc="Partnership, collaboration, and alumni outreach channels for the society."
+            href="contact.html"
+          >
+            <span class="route-prefix">&gt;</span><span class="route-index">04</span><span class="route-name">CONTACT</span><span class="route-badge">OPEN</span>
+          </a>
+        </div>
+
+        <section class="route-context" aria-live="polite">
+          <p class="context-label">ROUTE BRIEF</p>
+          <h3 id="route-context-name">EVENTS</h3>
+          <p id="route-context-desc">Upcoming market sessions, competitions, and archives across AFS.</p>
+          <p class="context-meta"><span id="route-context-status" class="context-status" data-state="ACTIVE">ACTIVE</span><span id="route-context-key">[2]</span></p>
+        </section>
+
+        <div class="shortcut-legend">
+          <span>[1] HOME</span>
+          <span>[2] EVENTS</span>
+          <span>[3] RESOURCES</span>
+          <span>[4] CONTACT</span>
+        </div>
       </div>
     </nav>
 

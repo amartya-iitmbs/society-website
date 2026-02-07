@@ -7,6 +7,22 @@ const tickerData = [
   { name: "RISK PREM", price: 4.32, move: 0.29 }
 ];
 
+const liveTickerData = [
+  { symbol: "NIFTY 50", price: 22475.85, move: 0.86 },
+  { symbol: "SENSEX", price: 74108.24, move: 0.44 },
+  { symbol: "BANK NIFTY", price: 48256.62, move: -0.22 },
+  { symbol: "USDINR", price: 83.14, move: 0.11 },
+  { symbol: "10Y GSEC", price: 7.09, move: -0.03 },
+  { symbol: "BRENT", price: 82.77, move: 0.35 },
+  { symbol: "GOLD", price: 2064.5, move: -0.17 },
+  { symbol: "AMARTYA EQ", price: 348.21, move: -0.42 }
+];
+
+const LIVE_TICKER_DURATION_SECONDS = 42;
+const LIVE_TICKER_UPDATE_MS = 2600;
+const LIVE_TICKER_START_KEY = "amartya_live_ticker_start_v1";
+const LIVE_TICKER_STATE_KEY = "amartya_live_ticker_state_v1";
+
 const ticker = document.getElementById("ticker");
 const clock = document.getElementById("clock");
 const router = document.querySelector("[data-router]");
@@ -26,6 +42,161 @@ const routeShortcutMap = {
 };
 
 let activeRouteId = null;
+
+function readSessionValue(key) {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeSessionValue(key, value) {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // Ignore storage errors (private mode / quota).
+  }
+}
+
+function ensureLiveTickerStartTime() {
+  const now = Date.now();
+  const saved = Number(readSessionValue(LIVE_TICKER_START_KEY));
+  if (Number.isFinite(saved) && saved > 0) return saved;
+
+  writeSessionValue(LIVE_TICKER_START_KEY, String(now));
+  return now;
+}
+
+function restoreLiveTickerState() {
+  const raw = readSessionValue(LIVE_TICKER_STATE_KEY);
+  if (!raw) return;
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return;
+  }
+
+  if (!Array.isArray(parsed)) return;
+
+  const map = Object.fromEntries(
+    parsed
+      .filter((item) => item && typeof item.symbol === "string")
+      .map((item) => [item.symbol, item])
+  );
+
+  liveTickerData.forEach((item) => {
+    const saved = map[item.symbol];
+    if (!saved) return;
+
+    const nextPrice = Number(saved.price);
+    const nextMove = Number(saved.move);
+    if (Number.isFinite(nextPrice)) item.price = Math.max(0.5, nextPrice);
+    if (Number.isFinite(nextMove)) item.move = nextMove;
+  });
+}
+
+function persistLiveTickerState() {
+  const payload = liveTickerData.map((item) => ({
+    symbol: item.symbol,
+    price: Number(item.price.toFixed(4)),
+    move: Number(item.move.toFixed(4))
+  }));
+  writeSessionValue(LIVE_TICKER_STATE_KEY, JSON.stringify(payload));
+}
+
+function setupLiveTicker() {
+  if (document.getElementById("global-live-ticker")) return;
+
+  const strip = document.createElement("section");
+  strip.className = "global-ticker";
+  strip.id = "global-live-ticker";
+  strip.innerHTML = `
+    <span class="global-ticker-label">LIVE TICKER</span>
+    <div class="global-ticker-viewport">
+      <div class="global-ticker-track" id="global-ticker-track"></div>
+    </div>
+  `;
+
+  document.body.appendChild(strip);
+  renderLiveTickerTrack();
+  applyLiveTickerPhase();
+}
+
+function formatLivePrice(value) {
+  return value >= 1000 ? value.toFixed(2) : value.toFixed(2);
+}
+
+function buildLiveTickerItem(item) {
+  const moveClass = item.move >= 0 ? "up" : "down";
+  const sign = item.move >= 0 ? "+" : "-";
+
+  return `
+    <article class="global-ticker-item" data-symbol="${item.symbol}">
+      <span class="global-ticker-symbol">${item.symbol}</span>
+      <span class="global-ticker-price">${formatLivePrice(item.price)}</span>
+      <span class="global-ticker-move ${moveClass}">${sign}${Math.abs(item.move).toFixed(2)}%</span>
+    </article>
+  `;
+}
+
+function renderLiveTickerTrack() {
+  const track = document.getElementById("global-ticker-track");
+  if (!track) return;
+
+  const sequence = liveTickerData.map(buildLiveTickerItem).join("");
+  track.innerHTML = `
+    <div class="global-ticker-group">${sequence}</div>
+    <div class="global-ticker-group" aria-hidden="true">${sequence}</div>
+  `;
+}
+
+function applyLiveTickerPhase() {
+  const track = document.getElementById("global-ticker-track");
+  if (!track) return;
+
+  const startTime = ensureLiveTickerStartTime();
+  const elapsedSeconds = (Date.now() - startTime) / 1000;
+  const phaseSeconds =
+    ((elapsedSeconds % LIVE_TICKER_DURATION_SECONDS) + LIVE_TICKER_DURATION_SECONDS) %
+    LIVE_TICKER_DURATION_SECONDS;
+
+  track.style.animationDuration = `${LIVE_TICKER_DURATION_SECONDS}s`;
+  track.style.animationDelay = `-${phaseSeconds.toFixed(3)}s`;
+}
+
+function randomizeLiveTicker() {
+  liveTickerData.forEach((item) => {
+    const drift = (Math.random() - 0.5) * 0.9;
+    item.move = drift;
+    item.price += (Math.random() - 0.5) * (item.price * 0.0022);
+    if (item.price < 0.5) item.price = 0.5;
+  });
+
+  const itemNodes = document.querySelectorAll(".global-ticker-item");
+  if (!itemNodes.length) return;
+
+  const dataBySymbol = Object.fromEntries(liveTickerData.map((item) => [item.symbol, item]));
+  itemNodes.forEach((node) => {
+    const item = dataBySymbol[node.dataset.symbol];
+    if (!item) return;
+
+    const priceNode = node.querySelector(".global-ticker-price");
+    const moveNode = node.querySelector(".global-ticker-move");
+    if (!priceNode || !moveNode) return;
+
+    const moveClass = item.move >= 0 ? "up" : "down";
+    const sign = item.move >= 0 ? "+" : "-";
+
+    priceNode.textContent = formatLivePrice(item.price);
+    moveNode.className = `global-ticker-move ${moveClass}`;
+    moveNode.textContent = `${sign}${Math.abs(item.move).toFixed(2)}%`;
+  });
+
+  persistLiveTickerState();
+}
 
 function renderTicker() {
   if (!ticker) return;
@@ -220,6 +391,7 @@ document.addEventListener("keydown", (event) => {
   if (key === "m") {
     event.preventDefault();
     randomizeTicker();
+    randomizeLiveTicker();
     return;
   }
 
@@ -230,6 +402,10 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+restoreLiveTickerState();
+ensureLiveTickerStartTime();
+persistLiveTickerState();
+setupLiveTicker();
 renderTicker();
 updateClock();
 setupRouter();
@@ -241,3 +417,5 @@ if (clock) {
 if (ticker) {
   setInterval(randomizeTicker, 4500);
 }
+
+setInterval(randomizeLiveTicker, LIVE_TICKER_UPDATE_MS);

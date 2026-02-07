@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amartya Finance Society | IITM BS</title>
+    <meta
+      name="description"
+      content="Official finance society of IITM BS. Markets, research, events, and community built with institutional focus."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="terminal-topbar">
+      <div class="left-group">
+        <span class="dot amber"></span>
+        <span class="dot green"></span>
+        <span class="tag">AFS // LIVE</span>
+      </div>
+      <div class="center-group">
+        <span>AMARTYA FINANCE SOCIETY</span>
+        <span class="divider"></span>
+        <span>IITM BS DEGREE</span>
+      </div>
+      <div class="right-group" id="clock"></div>
+    </header>
+
+    <nav class="page-menu panel" aria-label="Cross-page navigation">
+      <div class="panel-header">CROSS-PAGE MENU</div>
+      <div class="page-menu-row">
+        <span class="menu-prompt">AFS.ROUTER ></span>
+        <a class="page-link active" href="index.html" aria-current="page"><span>01</span> HOME</a>
+        <a class="page-link" href="events.html"><span>02</span> EVENTS</a>
+        <a class="page-link" href="resources.html"><span>03</span> RESOURCES</a>
+        <a class="page-link" href="contact.html"><span>04</span> CONTACT US</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero-grid">
+        <aside class="panel nav-panel">
+          <div class="panel-header">NAVIGATION</div>
+          <nav>
+            <a href="#about">01 ABOUT</a>
+            <a href="#desks">02 DESKS</a>
+            <a href="#research">03 RESEARCH</a>
+            <a href="#events">04 UPCOMING EVENTS</a>
+            <a href="#join">05 JOIN US</a>
+          </nav>
+          <div class="small-note">
+            <p>Shortcuts</p>
+            <p><kbd>G</kbd> Go to top</p>
+            <p><kbd>R</kbd> Refresh board</p>
+            <p>Use router for page switching</p>
+          </div>
+        </aside>
+
+        <section class="panel headline-panel">
+          <div class="panel-header">TERMINAL HEADLINE</div>
+          <div class="headline-content">
+            <p class="blinker">> OFFICIAL FINANCE SOCIETY OF IITM BS</p>
+            <h1>Amartya Finance Society</h1>
+            <p class="subhead">
+              Building market literacy, research rigor, and real-world finance skills
+              through a high-conviction student network.
+            </p>
+            <div class="cta-row">
+              <a href="#join" class="cta solid">Apply for Core Team</a>
+              <a href="#research" class="cta ghost">View Research Notes</a>
+              <a href="events.html" class="cta ghost">Explore Events</a>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel stats-panel">
+          <div class="panel-header">KEY STATS</div>
+          <div class="metric">
+            <span>Active Members</span>
+            <strong>260+</strong>
+          </div>
+          <div class="metric">
+            <span>Research Briefs</span>
+            <strong>42</strong>
+          </div>
+          <div class="metric">
+            <span>Market Sessions</span>
+            <strong>88</strong>
+          </div>
+          <div class="metric">
+            <span>Simulation Hours</span>
+            <strong>1,400+</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="ticker-wrap panel">
+        <div class="panel-header">LIVE BOARD</div>
+        <div class="ticker" id="ticker"></div>
+      </section>
+
+      <section id="about" class="content-grid">
+        <article class="panel about-panel">
+          <div class="panel-header">ABOUT AFS</div>
+          <p>
+            Amartya Finance Society is the official finance society of the IITM BS
+            Degree. We run weekly market briefs, valuation deep-dives, and practical
+            sessions across equity, macro, and fintech.
+          </p>
+          <p>
+            Our approach is simple: think like analysts, communicate like operators,
+            and execute like a desk.
+          </p>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-header">SENTIMENT INDEX</div>
+          <svg viewBox="0 0 600 220" class="line-chart" aria-label="Sentiment trend chart">
+            <polyline
+              fill="none"
+              stroke="var(--chart-line)"
+              stroke-width="4"
+              points="0,180 60,150 120,155 180,130 240,110 300,120 360,100 420,85 480,92 540,70 600,60"
+            ></polyline>
+            <polyline
+              fill="url(#fillGrad)"
+              stroke="none"
+              points="0,220 0,180 60,150 120,155 180,130 240,110 300,120 360,100 420,85 480,92 540,70 600,60 600,220"
+            ></polyline>
+            <defs>
+              <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffd24f" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#ffd24f" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="chart-caption">Student confidence in market participation has trended upward for 11 straight cycles.</div>
+        </article>
+      </section>
+
+      <section id="desks" class="panel desks-panel">
+        <div class="panel-header">DESKS</div>
+        <div class="desk-grid">
+          <article>
+            <h3>Equity Research Desk</h3>
+            <p>Coverage notes, earnings trackers, valuation comps, thesis reviews.</p>
+          </article>
+          <article>
+            <h3>Macro & Policy Desk</h3>
+            <p>Rates, inflation, RBI/Fed lens, geopolitical and sector-level implications.</p>
+          </article>
+          <article>
+            <h3>Quant & Data Desk</h3>
+            <p>Backtests, signal frameworks, dashboards, and data storytelling.</p>
+          </article>
+          <article>
+            <h3>Fintech & Product Desk</h3>
+            <p>Payments, digital infra, startup unit economics, and business models.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="content-grid">
+        <article class="panel research-panel">
+          <div class="panel-header">RESEARCH FEED</div>
+          <ul>
+            <li><span>AFS-042</span> India Financialization: Retail Flows and Risk Appetite</li>
+            <li><span>AFS-041</span> IT Services Outlook Under Margin Compression</li>
+            <li><span>AFS-040</span> Banking Cycle Monitor: Asset Quality Inflection</li>
+            <li><span>AFS-039</span> Consumer Credit Pulse and NBFC Repricing</li>
+          </ul>
+        </article>
+
+        <article id="events" class="panel event-panel">
+          <div class="panel-header">UPCOMING EVENTS</div>
+          <div class="event-item">
+            <h4>Open Market Room</h4>
+            <p>Tuesday | 8:00 PM IST</p>
+          </div>
+          <div class="event-item">
+            <h4>Pitch Lab: 5-Minute Thesis</h4>
+            <p>Friday | 7:30 PM IST</p>
+          </div>
+          <div class="event-item">
+            <h4>Foundations Bootcamp</h4>
+            <p>Weekend Cohort | Beginner Track</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="join" class="panel join-panel">
+        <div class="panel-header">JOIN AMARTYA FINANCE SOCIETY</div>
+        <p>
+          Open to IITM BS learners across all levels. We value curiosity, consistency,
+          and willingness to build with a team.
+        </p>
+        <form class="join-form">
+          <input type="text" placeholder="Full Name" />
+          <input type="email" placeholder="IITM BS Email" />
+          <select>
+            <option>Preferred Desk</option>
+            <option>Equity Research</option>
+            <option>Macro & Policy</option>
+            <option>Quant & Data</option>
+            <option>Fintech & Product</option>
+          </select>
+          <button type="button">Submit Interest</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="terminal-footer">
+      <span>AMARTYA FINANCE SOCIETY</span>
+      <span>OFFICIAL FINANCE SOCIETY | IITM BS DEGREE</span>
+      <span>Built with market discipline.</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

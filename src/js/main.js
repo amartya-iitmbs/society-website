@@ -1,6 +1,6 @@
 const tickerData = [
   { name: "NIFTY SENT", price: 22475.85, move: 0.86 },
-  { name: "AFS EQUITY", price: 348.21, move: -0.42 },
+  { name: "Amartya EQUITY", price: 348.21, move: -0.42 },
   { name: "RUPEE INDEX", price: 83.14, move: 0.11 },
   { name: "CAMPUS ALPHA", price: 129.72, move: 1.24 },
   { name: "VOL MATRIX", price: 18.06, move: -0.67 },
@@ -21,7 +21,8 @@ const routeShortcutMap = {
   "1": "home",
   "2": "events",
   "3": "resources",
-  "4": "contact"
+  "4": "team",
+  "5": "contact"
 };
 
 let activeRouteId = null;
@@ -116,7 +117,7 @@ function setBreadcrumb(link) {
   if (!link || !routeBreadcrumb) return;
 
   const crumb = link.dataset.breadcrumb || (link.dataset.route || "HOME").toUpperCase();
-  routeBreadcrumb.textContent = `AFS // ${crumb}`;
+  routeBreadcrumb.textContent = `Amartya // ${crumb}`;
 }
 
 function setActiveRoute(routeId) {

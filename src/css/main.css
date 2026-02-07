@@ -16,6 +16,13 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 html,
@@ -385,7 +392,7 @@ main {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 220px 1fr 230px;
+  grid-template-columns: minmax(0, 1fr) 230px;
   gap: 1.2rem;
 }
 
@@ -674,6 +681,79 @@ h1 {
   font-size: 0.82rem;
 }
 
+.team-panel {
+  padding-bottom: 0.8rem;
+}
+
+.team-intro {
+  margin: 0;
+  padding: 0.65rem 1rem 0.35rem;
+  color: #bfd0df;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #2a3745;
+  margin: 0.75rem 1rem 0.35rem;
+}
+
+.team-card {
+  background: linear-gradient(180deg, #111a24, #0f1721);
+  padding: 0.9rem 0.85rem 0.95rem;
+}
+
+.team-role {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.11em;
+  color: #8fa7bd;
+  text-transform: uppercase;
+}
+
+.team-card h3 {
+  margin: 0.3rem 0 0.38rem;
+  font-size: 1.06rem;
+  color: #ffe2a0;
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.team-focus {
+  margin: 0;
+  color: #b8c8d8;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  min-height: 2.7rem;
+}
+
+.team-links {
+  margin-top: 0.72rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.team-links a {
+  text-decoration: none;
+  border: 1px solid #355069;
+  color: #c7d8e9;
+  background: #122031;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.24rem 0.4rem;
+  text-transform: uppercase;
+}
+
+.team-links a:hover {
+  border-color: var(--terminal-amber);
+  color: #ffeab4;
+  box-shadow: 0 0 10px rgba(255, 204, 77, 0.14);
+}
+
 .join-form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -955,6 +1035,10 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .join-form {
     grid-template-columns: 1fr 1fr;
   }
@@ -1002,6 +1086,10 @@ textarea {
 
   .desk-grid,
   .join-form {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
     grid-template-columns: 1fr;
   }
 

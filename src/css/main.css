@@ -10,6 +10,8 @@
   --chart-line: #ffd24f;
   --accent-red: #ff5e57;
   --glow: 0 0 22px rgba(255, 204, 77, 0.18);
+  --side-menu-width: 248px;
+  --side-menu-gap: 1.35rem;
 }
 
 * {
@@ -60,7 +62,7 @@ main,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem calc(var(--side-menu-width) + 1.2rem);
   border-bottom: 1px solid var(--border);
   background: linear-gradient(to bottom, #0a0f14, #0b1118);
   font-family: "IBM Plex Mono", monospace;
@@ -102,65 +104,133 @@ main,
 }
 
 main {
-  width: min(1250px, 95vw);
-  margin: 1.1rem auto 3.4rem;
+  width: min(1250px, calc(100vw - (var(--side-menu-width) + 4.6rem)));
+  margin: 1.1rem 1.4rem 3.4rem calc(var(--side-menu-width) + 1.55rem);
   display: grid;
   gap: 1.35rem;
 }
 
 .page-menu {
-  width: min(1250px, 95vw);
-  margin: 1rem auto 0;
-  border-color: #354352;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 8px 26px rgba(0, 0, 0, 0.24);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--side-menu-width);
+  margin: 0;
+  border: 0;
+  border-right: 1px solid rgba(90, 108, 126, 0.65);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015), 8px 0 20px rgba(0, 0, 0, 0.2);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.014),
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    linear-gradient(180deg, rgba(15, 22, 31, 0.97) 0%, rgba(10, 16, 23, 0.95) 55%, rgba(8, 13, 19, 0.94) 100%);
+  z-index: 3;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.page-menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 204, 77, 0.045), transparent 28%);
+}
+
+.page-menu::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 204, 77, 0.32), rgba(255, 204, 77, 0.03) 22%, rgba(255, 204, 77, 0.22) 100%);
+  pointer-events: none;
+}
+
+.page-menu .panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid #3a4959;
+  padding: 0.72rem 0.78rem;
+  background: linear-gradient(to right, rgba(255, 204, 77, 0.16), rgba(255, 204, 77, 0.04));
+  color: #f4d684;
+  letter-spacing: 0.12em;
 }
 
 .page-menu-row {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-  padding: 0.82rem 0.95rem;
-  background: linear-gradient(to right, rgba(33, 45, 58, 0.8), rgba(17, 26, 35, 0.45));
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.42rem;
+  min-height: calc(100vh - 2.9rem);
+  padding: 0.9rem 0.75rem 1rem;
+  background: linear-gradient(to bottom, rgba(33, 45, 58, 0.12), rgba(17, 26, 35, 0.06));
+}
+
+.page-menu-row::after {
+  content: "NAV STATUS\\A ROUTES: 04\\A MODE: TERMINAL";
+  white-space: pre;
+  display: block;
+  margin-top: auto;
+  padding: 0.62rem 0.55rem;
+  border: 1px solid rgba(57, 73, 89, 0.85);
+  background: rgba(14, 20, 28, 0.68);
+  color: #7f95a9;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  line-height: 1.6;
+  letter-spacing: 0.07em;
 }
 
 .menu-prompt {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
-  color: var(--terminal-green);
-  letter-spacing: 0.04em;
-  margin-right: 0.35rem;
+  font-size: 0.72rem;
+  color: #8ddab0;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+  border: 1px solid rgba(63, 109, 92, 0.72);
+  background: rgba(14, 27, 26, 0.75);
+  padding: 0.38rem 0.46rem;
 }
 
 .page-link {
+  display: block;
   text-decoration: none;
-  border: 1px solid #395062;
-  background: linear-gradient(180deg, #152231, #111b28);
-  color: #d2e3f3;
-  padding: 0.43rem 0.7rem;
+  border: 1px solid rgba(58, 78, 97, 0.84);
+  background: linear-gradient(180deg, rgba(18, 32, 49, 0.72), rgba(15, 26, 41, 0.58));
+  color: #c6d8ea;
+  padding: 0.54rem 0.68rem;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   letter-spacing: 0.04em;
   transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+  text-transform: uppercase;
 }
 
 .page-link span {
-  color: #8ea6bb;
+  color: #839bb0;
   margin-right: 0.32rem;
 }
 
 .page-link:hover {
   border-color: var(--terminal-amber);
-  color: #fff4cf;
-  box-shadow: 0 0 18px rgba(255, 204, 77, 0.18);
-  transform: translateY(-1px);
+  color: #ffebba;
+  box-shadow: 0 0 12px rgba(255, 204, 77, 0.11), inset 0 0 0 1px rgba(255, 204, 77, 0.1);
+  transform: translateX(0.5px);
 }
 
 .page-link.active {
   border-color: var(--terminal-amber);
-  background: linear-gradient(180deg, #2b2518, #1e1a13);
-  color: #ffe4a3;
-  box-shadow: inset 0 0 0 1px rgba(255, 204, 77, 0.25);
+  background: linear-gradient(180deg, rgba(47, 40, 24, 0.85), rgba(32, 27, 19, 0.74));
+  color: #ffe3a0;
+  box-shadow: inset 0 0 0 1px rgba(255, 204, 77, 0.2), 0 0 12px rgba(255, 204, 77, 0.1);
 }
 
 .page-link.active span {
@@ -487,8 +557,8 @@ button:hover {
 }
 
 .terminal-footer {
-  width: min(1250px, 95vw);
-  margin: 0 auto 1.9rem;
+  width: min(1250px, calc(100vw - (var(--side-menu-width) + 4.6rem)));
+  margin: 0 1.4rem 1.9rem calc(var(--side-menu-width) + 1.55rem);
   padding: 1rem;
   border: 1px solid var(--border);
   display: flex;
@@ -666,6 +736,65 @@ textarea {
 }
 
 @media (max-width: 1100px) {
+  .terminal-topbar {
+    padding: 0.8rem 1.2rem;
+  }
+
+  main {
+    width: min(1250px, 95vw);
+    margin: 1.1rem auto 3.4rem;
+  }
+
+  .page-menu {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    width: min(1250px, 95vw);
+    margin: 1rem auto 0;
+    border: 1px solid #354352;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 8px 26px rgba(0, 0, 0, 0.24);
+    z-index: 2;
+  }
+
+  .page-menu-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    min-height: 0;
+    padding: 0.82rem 0.95rem;
+    background: linear-gradient(to right, rgba(33, 45, 58, 0.8), rgba(17, 26, 35, 0.45));
+  }
+
+  .page-menu-row::after {
+    display: none;
+  }
+
+  .page-menu::after {
+    display: none;
+  }
+
+  .page-menu .panel-header {
+    position: static;
+    border-bottom: 1px solid #2d3b49;
+    padding: 0.72rem 0.95rem;
+    background: linear-gradient(to right, rgba(255, 204, 77, 0.08), transparent);
+  }
+
+  .menu-prompt {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
+    margin-right: 0.35rem;
+  }
+
+  .terminal-footer {
+    width: min(1250px, 95vw);
+    margin: 0 auto 1.9rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
   }

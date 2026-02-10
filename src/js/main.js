@@ -36,9 +36,7 @@ const routeBreadcrumb = document.getElementById("route-breadcrumb");
 const routeShortcutMap = {
   "1": "home",
   "2": "events",
-  "3": "resources",
-  "4": "team",
-  "5": "contact"
+  "3": "contact"
 };
 
 let activeRouteId = null;

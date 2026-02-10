@@ -1016,6 +1016,15 @@ button:hover {
   letter-spacing: 0.03em;
 }
 
+.contact-list a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  color: #ffdd7e;
+}
+
 .contact-form {
   display: grid;
   gap: 0.8rem;

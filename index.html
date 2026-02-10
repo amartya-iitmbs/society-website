@@ -65,36 +65,14 @@
           </a>
           <a
             class="page-link route-primary"
-            data-route="resources"
-            data-key="3"
-            data-state="LIVE"
-            data-breadcrumb="RESOURCES"
-            data-desc="Curated and produced learning material including PDFs, articles, and video lectures."
-            href="pages/resources.html"
-          >
-            <span class="route-prefix">&gt;</span><span class="route-index">03</span><span class="route-name">RESOURCES</span><span class="route-badge">LIVE</span>
-          </a>
-          <a
-            class="page-link route-primary"
-            data-route="team"
-            data-key="4"
-            data-state="LIVE"
-            data-breadcrumb="TEAM"
-            data-desc="Core leadership team responsible for strategy, operations, research quality, and community."
-            href="pages/team.html"
-          >
-            <span class="route-prefix">&gt;</span><span class="route-index">04</span><span class="route-name">TEAM</span><span class="route-badge">LIVE</span>
-          </a>
-          <a
-            class="page-link route-primary"
             data-route="contact"
-            data-key="5"
+            data-key="3"
             data-state="OPEN"
             data-breadcrumb="CONTACT"
             data-desc="Partnership, collaboration, and alumni outreach channels for the society."
             href="pages/contact.html"
           >
-            <span class="route-prefix">&gt;</span><span class="route-index">05</span><span class="route-name">CONTACT</span><span class="route-badge">OPEN</span>
+            <span class="route-prefix">&gt;</span><span class="route-index">04</span><span class="route-name">CONTACT</span><span class="route-badge">OPEN</span>
           </a>
         </div>
 
@@ -108,9 +86,7 @@
         <div class="shortcut-legend">
           <span>[1] HOME</span>
           <span>[2] EVENTS</span>
-          <span>[3] RESOURCES</span>
-          <span>[4] TEAM</span>
-          <span>[5] CONTACT</span>
+          <span>[3] CONTACT</span>
         </div>
       </div>
     </nav>
@@ -127,9 +103,7 @@
               through a high-conviction student network.
             </p>
             <div class="cta-row">
-              <a href="#join" class="cta solid">Apply for Core Team</a>
-              <a href="pages/team.html" class="cta ghost">Meet Core Team</a>
-              <a href="#research" class="cta ghost">View Research Notes</a>
+              <a href="pages/contact.html" class="cta solid">Contact Us</a>
               <a href="pages/events.html" class="cta ghost">Explore Events</a>
             </div>
           </div>
@@ -156,118 +130,75 @@
         </aside>
       </section>
 
-      <section class="ticker-wrap panel">
-        <div class="panel-header">LIVE BOARD</div>
-        <div class="ticker" id="ticker"></div>
-      </section>
-
-      <section id="about" class="content-grid">
-        <article class="panel about-panel">
-          <div class="panel-header">ABOUT Amartya</div>
-          <p>
-            Amartya Finance Society is the official finance society of the IITM BS
-            Degree. We run weekly market briefs, valuation deep-dives, and practical
-            sessions across equity, macro, and fintech.
+      
+      <section id="about" class="panel">
+        <div class="panel-header">ABOUT AMARTYA</div>
+        <div style="padding: 1.5rem;">
+          <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem;">
+            A student-led finance society focused on fostering financial thinking, analytical skills, and real-world market understanding across the IIT Madras BS Degree. Amartya connects like-minded learners interested in finance, economics, data, and decision-making.
           </p>
-          <p>
-            Our approach is simple: think like analysts, communicate like operators,
-            and execute like a desk.
-          </p>
-        </article>
-
-        <article class="panel chart-panel">
-          <div class="panel-header">SENTIMENT INDEX</div>
-          <svg viewBox="0 0 600 220" class="line-chart" aria-label="Sentiment trend chart">
-            <polyline
-              fill="none"
-              stroke="var(--chart-line)"
-              stroke-width="4"
-              points="0,180 60,150 120,155 180,130 240,110 300,120 360,100 420,85 480,92 540,70 600,60"
-            ></polyline>
-            <polyline
-              fill="url(#fillGrad)"
-              stroke="none"
-              points="0,220 0,180 60,150 120,155 180,130 240,110 300,120 360,100 420,85 480,92 540,70 600,60 600,220"
-            ></polyline>
-            <defs>
-              <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffd24f" stop-opacity="0.35" />
-                <stop offset="100%" stop-color="#ffd24f" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="chart-caption">Student confidence in market participation has trended upward for 11 straight cycles.</div>
-        </article>
-      </section>
-
-      <section id="desks" class="panel desks-panel">
-        <div class="panel-header">DESKS</div>
-        <div class="desk-grid">
-          <article>
-            <h3>Equity Research Desk</h3>
-            <p>Coverage notes, earnings trackers, valuation comps, thesis reviews.</p>
-          </article>
-          <article>
-            <h3>Macro & Policy Desk</h3>
-            <p>Rates, inflation, RBI/Fed lens, geopolitical and sector-level implications.</p>
-          </article>
-          <article>
-            <h3>Quant & Data Desk</h3>
-            <p>Backtests, signal frameworks, dashboards, and data storytelling.</p>
-          </article>
-          <article>
-            <h3>Fintech & Product Desk</h3>
-            <p>Payments, digital infra, startup unit economics, and business models.</p>
-          </article>
         </div>
       </section>
 
-      <section id="research" class="content-grid">
-        <article class="panel research-panel">
-          <div class="panel-header">RESEARCH FEED</div>
-          <ul>
-            <li><span>Amartya-042</span> India Financialization: Retail Flows and Risk Appetite</li>
-            <li><span>Amartya-041</span> IT Services Outlook Under Margin Compression</li>
-            <li><span>Amartya-040</span> Banking Cycle Monitor: Asset Quality Inflection</li>
-            <li><span>Amartya-039</span> Consumer Credit Pulse and NBFC Repricing</li>
-          </ul>
-        </article>
-
-        <article id="events" class="panel event-panel">
-          <div class="panel-header">UPCOMING EVENTS</div>
-          <div class="event-item">
-            <h4>Open Market Room</h4>
-            <p>Tuesday | 8:00 PM IST</p>
-          </div>
-          <div class="event-item">
-            <h4>Pitch Lab: 5-Minute Thesis</h4>
-            <p>Friday | 7:30 PM IST</p>
-          </div>
-          <div class="event-item">
-            <h4>Foundations Bootcamp</h4>
-            <p>Weekend Cohort | Beginner Track</p>
-          </div>
-        </article>
+      <section id="mission" class="panel">
+        <div class="panel-header">OUR MISSION</div>
+        <div style="padding: 1.5rem;">
+          <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem;">
+            To build a strong finance culture within the IIT Madras BS Degree by enabling students to learn, apply, and discuss finance through research, events, and collaborative initiatives.
+          </p>
+          <p style="color: var(--text); line-height: 1.6;">
+            We aim to bridge academic concepts with practical financial thinking while creating a community of students curious about markets, investing, policy, and quantitative analysis.
+          </p>
+        </div>
       </section>
 
-      <section id="join" class="panel join-panel">
-        <div class="panel-header">JOIN AMARTYA FINANCE SOCIETY</div>
-        <p>
-          Open to IITM BS learners across all levels. We value curiosity, consistency,
-          and willingness to build with a team.
-        </p>
-        <form class="join-form">
-          <input type="text" placeholder="Full Name" />
-          <input type="email" placeholder="IITM BS Email" />
-          <select>
-            <option>Preferred Desk</option>
-            <option>Equity Research</option>
-            <option>Macro & Policy</option>
-            <option>Quant & Data</option>
-            <option>Fintech & Product</option>
-          </select>
-          <button type="button">Submit Interest</button>
-        </form>
+      <section id="what-we-do" class="panel">
+        <div class="panel-header">WHAT WE DO</div>
+        <div style="padding: 1.5rem;">
+          <div style="margin-bottom: 2rem;">
+            <h3 style="color: var(--terminal-amber); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; margin-bottom: 1rem;">Research & Analysis</h3>
+            <p style="color: var(--text); line-height: 1.6;">
+              We promote structured financial research through reports, thesis-level reviews, and data-driven analysis across markets, firms, and economic themes.
+            </p>
+          </div>
+          
+          <div style="margin-bottom: 2rem;">
+            <h3 style="color: var(--terminal-amber); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; margin-bottom: 1rem;">Learning & Skill Building</h3>
+            <p style="color: var(--text); line-height: 1.6;">
+              Through workshops, bootcamps, and peer-led sessions, we help students develop practical skills in finance, valuation, analytics, and financial reasoning.
+            </p>
+          </div>
+          
+          <div style="margin-bottom: 2rem;">
+            <h3 style="color: var(--terminal-amber); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; margin-bottom: 1rem;">Events & Competitions</h3>
+            <p style="color: var(--text); line-height: 1.6;">
+              We organize finance-focused events including case competitions, speaker sessions, and collaborative challenges to encourage applied learning.
+            </p>
+          </div>
+          
+          <div>
+            <h3 style="color: var(--terminal-amber); font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; margin-bottom: 1rem;">Community & Collaboration</h3>
+            <p style="color: var(--text); line-height: 1.6;">
+              Amartya serves as a platform for students across the BS Degree to connect, discuss ideas, and grow together around a shared interest in finance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="who-its-for" class="panel">
+        <div class="panel-header">WHO IT'S FOR</div>
+        <div style="padding: 1.5rem;">
+          <p style="color: var(--text); line-height: 1.6; margin-bottom: 1.5rem;">
+            Amartya is for students who are:
+          </p>
+          <ul style="color: var(--text); line-height: 1.6; padding-left: 1.5rem;">
+            <li style="margin-bottom: 0.8rem;">Curious about finance, markets, and economics</li>
+            <li style="margin-bottom: 0.8rem;">Interested in applying data and analytics to financial problems</li>
+            <li style="margin-bottom: 0.8rem;">Looking to collaborate with peers who think analytically</li>
+            <li style="margin-bottom: 0.8rem;">Exploring careers or deeper learning in finance and related fields</li>
+            <li>No prior finance background also works - curiosity and commitment matter more.</li>
+          </ul>
+        </div>
       </section>
     </main>
 
